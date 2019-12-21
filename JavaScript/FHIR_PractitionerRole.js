@@ -1,4 +1,4 @@
-﻿function practitionerRole() {
+function practitionerRole() {
     var text = {
         "resourceType": "PractitionerRole",
         "id": "",
@@ -21,6 +21,6 @@
     text.id = practitionerId + "HFC";
     var myJSON = JSON.stringify(text);
     //HTTPPostData("http://hapi.fhir.org/baseDstu3/PractitionerRole", myJSON, "practitionerRole");
-    var url = "http://hapi.fhir.org/baseDstu3/PractitionerRole/" + text.id;
+    var url = "http://hapi.fhir.org/baseR4/PractitionerRole/" + text.id;
     HTTPPutData(url, myJSON, "practitionerRole");
 }

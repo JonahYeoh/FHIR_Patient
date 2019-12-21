@@ -1,9 +1,9 @@
 function verify() {
-    var urL = "http://hapi.fhir.org/baseDstu3/Patient?organization=1945183&&given:exact=";
+    var urL = "http://hapi.fhir.org/baseR4/Patient?organization=jonah&&given:exact=";
     var given = document.getElementById("given").value;
-    var family = document.getElementById("family").value;
-    if (given != "" && family != "") {
-        urL = urL + given + "&&family=" + family;
+    //var family = document.getElementById("family").value;
+    if (given != "") {
+        urL = urL + given; // + "&&family=" + family;
         getData(urL, 1);
     } else
         alert("Please enter something");
@@ -62,7 +62,7 @@ function end_encounter(conditionCode) {
     text.diagnosis[0].condition.reference = "Condition/" + conditionCode;
 
     var myJSON = JSON.stringify(text);
-    HTTPPostData("http://hapi.fhir.org/baseDstu3/Encounter", myJSON, 0);
+    HTTPPostData("http://hapi.fhir.org/baseR4/Encounter", myJSON, 0);
 }
 
 /*
@@ -110,7 +110,7 @@ function conditionData(code) {
     end_str = period_start();
     text.period.end = end_str;
     var myJSON = JSON.stringify(text);
-    HTTPPostData("http://hapi.fhir.org/baseDstu3/Condition", myJSON, 1);
+    HTTPPostData("http://hapi.fhir.org/baseR4/Condition", myJSON, 1);
 }
 
 
@@ -130,7 +130,7 @@ function setCookie_PatientId() {
         period_start();
         //document.getElementById("hide").innerHTML = "<button type= 'button' id='button2' onclick='end_encounter()'>Click here if mone of the following risk are true</button>";
 
-        string = '<table align="center" border="1" cellspacing="10" cellpadding="2" style="width:100%;height:45%;"><tr><td colspan="2" align="center"><h2><b>Risk: </b></h2></td></tr>';
+        string = '<table align="center" border="1" cellspacing="10" cellpadding="2" style="width:100%;height:55%;padding:5px;"><tr><td colspan="2" align="center"><h2><b>Risk: </b></h2></td></tr>';
         string += '<tr><td style="width:50%;"><p><b>Chronic Diabetes: &nbsp; </b><button type="button" id="button1" name="condition" onclick="conditionData(73211009);">Yes</button>';
         string += '</p></td><td><p><b>Chronic Hypertension: &nbsp; </b><button type="button" id="button2" name="condition" onclick="conditionData(38341003);">Yes</button>';
         string += '</p></td></tr><tr><td><p><b>More than 65 Years Old: &nbsp; </b><button type="button" id="button3" name="condition" onclick="conditionData(271872005);">Yes</button>';
@@ -143,4 +143,21 @@ function setCookie_PatientId() {
         string += '</p></td><td></td></tr></table>';
         document.getElementById("hide_table").innerHTML = string;
     }
+}
+
+function loadHideTable() {
+    string = '<table align="center" border="1" cellspacing="10" cellpadding="2" style="width:60%;height:45%;left: 50px;border-collapse:collapse;"><tr><td colspan="2" align="center"><h2><b>Risk: </b></h2></td></tr>';
+    string += '<tr><td style="width:50%;"><p><b>Chronic Diabetes: &nbsp; </b><button type="button" id="button1" name="condition" onclick="conditionData(73211009);">Yes</button>';
+    string += '</p></td><td><p><b>Chronic Hypertension: &nbsp; </b><button type="button" id="button2" name="condition" onclick="conditionData(38341003);">Yes</button>';
+    string += '</p></td></tr><tr><td><p><b>More than 65 Years Old: &nbsp; </b><button type="button" id="button3" name="condition" onclick="conditionData(271872005);">Yes</button>';
+    string += '</p></td><td><p><b>Family History Of CKD Stage 5: &nbsp; </b><button type="button" id="button4" name="condition" onclick="conditionData(430560006);">Yes</button>';
+    string += '</p></td></tr><tr><td><p><b>Cardiovascular Disease: &nbsp; </b><button type="button" id="button5" name="condition" onclick="conditionData(49601007);">Yes</button>';
+    string += '</p></td><td style="width:50%;"><p><b>Structural Renal Tract Disease, Renal Calculi: &nbsp; </b><button type="button" id="button6" name="condition" onclick="conditionData(95570007);">Yes</button>';
+    string += '</p></td></tr><tr><td><p><b>Opportunistic( Incidental ) Detection Of Hematuria: &nbsp; </b><button type="button" id="button7" name="condition" onclick="conditionData(34436003);">Yes</button>';
+    string += '</p></td><td><p><b>Chronic Use Of NSAID Or Other Nephrotoxic Drugs: &nbsp; </b><button type="button" id="button8" name="condition" onclick="conditionData(16403005);">Yes</button>';
+    string += '</p></td></tr><tr><td><p><b>Multisystem_D With Potential Kidney Involvement: &nbsp; </b><button type="button" id="button9" name="condition" onclick="conditionData(57653000);">Yes</button>';
+    string += '</p></td><td></td></tr></table>';
+    document.getElementById("hide_table").innerHTML = string;
+    document.getElementById("hide_table").style.height = "600px";
+
 }

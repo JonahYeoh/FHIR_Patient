@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="icon" href="icon_FHIR.svg" sizes="16x16" type="image/svg" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/JavaScript/queryID.js"></script>
+    <script src="/JavaScript/httpRequest.js"></script>
+    <script src="JavaScript/verification.js"></script>
+    <script src="JavaScript/dateTime.js"></script>
+    <script src="JavaScript/Cookie.js"></script>
+    <script>
+        function getData(urlStr, option, id) {
+            HTTPGetData(urlStr, option, id);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="login-box">
+        <img src="icon_FHIR.svg" class="avatar">
+        <h1>Login</h1>
+        <form>
+            <p>Username</p>
+            <!--<input type="text" id="family" name="username" placeholder="Enter Username">-->
+            <input type="text" id="given" name="username" placeholder="Enter Username">
+            <p>Role</p>
+            <select id="role" name="userrole">
+                <option id="role1" value="Patient">Patient</option>
+                <option id="role2" value="Practitioner">Practitioner</option>
+            </select>
+            <p>FHIR ID</p>
+            <input type="password" id="pwd" name="password" placeholder="Enter Password">
+            <input type="button" id="btn_1" name="submit" value="Login" onclick="checkStatus();">
+            <a href="patient_FHIR.HTML">Forget Password</a>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-﻿var xmlHttp = new XMLHttpRequest(); 
+var xmlHttp = new XMLHttpRequest();
 var ret;
 var conditionCode = 0;
 
@@ -7,7 +7,7 @@ function HTTPGetData(urlStr, option) {
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", urlStr, true);
     rawFile.setRequestHeader("Content-type", "application/json+fhir");
-    rawFile.onreadystatechange = function () {
+    rawFile.onreadystatechange = function() {
         if (rawFile.readyState === 4) {
             ret = rawFile.responseText;
             //alert("data retrieved");
@@ -22,7 +22,7 @@ function HTTPGetData(urlStr, option) {
                 }
             }
         }
-        
+
     }
     rawFile.send();
 }
@@ -32,8 +32,8 @@ function HTTPPostData(urlStr, dataStr, indicator) {
     var rawFile = new XMLHttpRequest();
     rawFile.open("POST", urlStr, true);
     rawFile.setRequestHeader("Content-type", "application/json+fhir");
-  
-    rawFile.onreadystatechange = function () {
+
+    rawFile.onreadystatechange = function() {
         if (rawFile.readyState === 4) {
             ret = rawFile.responseText;
             alert(ret);
@@ -44,8 +44,8 @@ function HTTPPostData(urlStr, dataStr, indicator) {
     rawFile.send(dataStr);
 }
 
-function getData(urlStr,option) {
-    HTTPGetData(urlStr,option);
+function getData(urlStr, option) {
+    HTTPGetData(urlStr, option);
 }
 
 function HTTPPutData(urlStr, dataStr) {
@@ -53,7 +53,7 @@ function HTTPPutData(urlStr, dataStr) {
     rawFile.open("PUT", urlStr, true);
     rawFile.setRequestHeader("Content-type", "application/json+fhir");
 
-    rawFile.onreadystatechange = function () {
+    rawFile.onreadystatechange = function() {
         if (rawFile.readyState === 4)
             ret = rawFile.responseText;
     }

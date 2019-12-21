@@ -1,4 +1,4 @@
-﻿var xmlHttp = new XMLHttpRequest(); 
+var xmlHttp = new XMLHttpRequest();
 var ret;
 
 //取得網路上的資源
@@ -6,30 +6,30 @@ function HTTPGetData(urlStr, option) {
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", urlStr, true);
     rawFile.setRequestHeader("Content-type", "application/json+fhir");
-    rawFile.onreadystatechange = function () {
+    rawFile.onreadystatechange = function() {
         if (rawFile.readyState === 4) {
             ret = rawFile.responseText;
             alert("data retrieved");
-			alert(ret);
+            alert(ret);
             var status = getVerification(ret, option);
             if (option == "practitionerRole" && status == 1)
-				bypass();
+                bypass();
         }
     }
     rawFile.send();
 }
 
 //上傳 dataStr 到網路上
-function HTTPPostData(urlStr, dataStr, option ) {
+function HTTPPostData(urlStr, dataStr, option) {
     var rawFile = new XMLHttpRequest();
     rawFile.open("POST", urlStr, true);
     rawFile.setRequestHeader("Content-type", "application/json+fhir");
-    rawFile.onreadystatechange = function () {
+    rawFile.onreadystatechange = function() {
         if (rawFile.readyState === 4) {
             ret = rawFile.responseText;
             alert("One");
             alert(ret);
-            postVerification(ret,option);            
+            postVerification(ret, option);
         }
     }
     rawFile.send(dataStr);
@@ -37,17 +37,20 @@ function HTTPPostData(urlStr, dataStr, option ) {
 
 function getData(urlStr, option) {
     HTTPGetData(urlStr, option);
+    alert("Get");
 }
 
 function HTTPPutData(urlStr, dataStr, option) {
+    alert(option);
     var rawFile = new XMLHttpRequest();
     rawFile.open("PUT", urlStr, true);
     rawFile.setRequestHeader("Content-type", "application/json+fhir");
 
-    rawFile.onreadystatechange = function () {
-        if (rawFile.readyState === 4){
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4) {
             ret = rawFile.responseText;
-            postVerification(ret,option); 
+            console.table(ret);
+            postVerification(ret, option);
             alert(ret);
         }
     }

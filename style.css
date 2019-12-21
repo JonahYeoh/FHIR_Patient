@@ -1,94 +1,129 @@
-		body {
-		    width: 100%;
-		    height: 120%;
-		    margin-left: auto;
-		    margin-right: auto;
-		    margin-top: 0;
-		    margin-bottom: 0;
-		    background: url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapersdsc.net%2Fwp-content%2Fuploads%2F2016%2F10%2FSky-High-Definition-Wallpapers.jpg&f=1&nofb=1);
-		    background-repeat: no-repeat;
-		    background-position: center;
-		    background-size: cover;
-		    opacity: 0.9;
-		    color: rgba(0, 0, 0, 1);
-		    overflow: hidden;
-		}
-		
-		.vgap {
-		    width: inherit;
-		    height: 20px;
-		    text-align: center;
-		    text-decoration: underline;
-		}
-		
-		.content {
-		    width: 100%;
-		    height: 120%;
-		    background-color: rgba(100, 170, 231, 0.2);
-		    float: right;
-		    left: 200px;
-		    align-items: center;
-		    opacity: 0.8;
-		}
-		
-		.left,
-		.right {
-		    border: 1px solid black;
-		    width: 45%;
-		}
-		
-		.left {
-		    float: left;
-		}
-		
-		.right {
-		    float: right;
-		}
-		
-		table {
-		    margin-right: auto;
-		    margin-left: auto;
-		    padding: 10px;
-		}
-		
-		.column0 {
-		    width: 300px;
-		    height: 20px;
-		    text-align: right;
-		}
-		
-		.hgap {
-		    width: 10%;
-		    height: 20px;
-		}
-		
-		.column2 {
-		    width: 50%;
-		    height: 20px;
-		}
-		
-		#button0 {
-		    height: 20px;
-		    background-color: rgba(164, 176, 190, 1.0);
-		}
-		
-		#hint {
-		    text-decoration: none;
-		}
-		
-		input[type="text"] {
-		    width: 300px;
-		}
-		
-		input[type="number"] {
-		    width: 300px;
-		}
-		
-		select {
-		    width: 300px;
-		}
-		
-		#addressBox input[type="text"],
-		#addressBoxW input[type="text"] {
-		    width: 100px;
-		}
+body {
+    margin: 0;
+    padding: 0;
+    width: 1355px;
+    height: 768px;
+    background: url(UDxtE9s.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+    background-repeat: no-repeat;
+}
+
+.login-box {
+    width: 320px;
+    height: 420px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.login-box p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.login-box input,
+.login-box select {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.login-box input[type="text"],
+input[type="password"],
+.login-box select {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #1c8adb;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.login-box input[type="submit"]:hover {
+    cursor: pointer;
+    background: #39dc79;
+    color: #000;
+}
+
+.login-box a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+}
+
+.login-box a:hover {
+    color: #39dc79;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    background: transparent;
+    cursor: pointer;
+}
+
+option:after {
+    background-color: red;
+}
+
+#btn_1 {
+    border: none;
+    outline: none;
+    height: 30px;
+    width: 100px;
+    background: #1c8adb;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#btn_1:hover {
+    cursor: pointer;
+    background: #39dc79;
+    color: #000;
+}
+
+#4get {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

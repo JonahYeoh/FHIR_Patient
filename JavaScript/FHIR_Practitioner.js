@@ -1,4 +1,9 @@
-﻿var gender = () => {
+/**
+ * http://usejsdoc.org/
+ */
+//
+
+var gender = () => {
     return document.getElementById("gender").value;
 }
 var contactValue = () => {
@@ -6,6 +11,7 @@ var contactValue = () => {
 }
 
 function practitionerPost() {
+    console.log("Practitioner Entered");
     var status = true;
     var text = {
         "resourceType": "Practitioner",
@@ -195,18 +201,24 @@ function practitionerPost() {
         }]
     }
 
-    if ((text.id = document.getElementById("nid").value) == '')
+    if ((text.id = document.getElementById("nid").value) == '') {
+        console.log("incomplete entry");
         return 0;
+    }
     text.identifier[0].value = "emr" + document.getElementById("nid").value;
     text.identifier[1].value = document.getElementById("nid").value;
-    if ((text.identifier[2].value = document.getElementById("wid").value) == '')
+    if ((text.identifier[2].value = document.getElementById("wid").value) == '') {
+        console.log("incomplete entry");
         return 0;
+    }
 
     if ((text.name[0].given[0] = document.getElementById("given").value) != '') {
         text.name[0].prefix = document.getElementById("title").value;
         text.name[0].given[0] = document.getElementById("given").value;
-    } else
+    } else {
+        console.log("incomplete entry");
         return 0;
+    }
 
     text.name[1].given[0] = document.getElementById("givenTaiwan").value;
 
@@ -214,8 +226,10 @@ function practitionerPost() {
         text.name[2].given[0] = document.getElementById("givenSimplified").value;
     }
 
-    if ((text.telecom[0].value = document.getElementById("telecom0").value) == '')
+    if ((text.telecom[0].value = document.getElementById("telecom0").value) == '') {
+        console.log("incomplete entry");
         return 0;
+    }
     text.telecom[1].value = document.getElementById("telecom1").value;
     text.telecom[2].value = document.getElementById("telecom2").value;
 
@@ -282,7 +296,7 @@ function practitionerPost() {
     if (status == true) {
         var myJSON = JSON.stringify(text);
         //var url = "http://192.168.174.128:8080/hapi-fhir-jpaserver-example/baseDstu3/Practitioner/" + text.id;
-        var url = "http://hapi.fhir.org/baseDstu3/Practitioner/" + text.id;
+        var url = "http://hapi.fhir.org/baseR4/Practitioner/" + text.id;
         HTTPPutData(url, myJSON, "practitioner");
     } else
         alert("Operation Failed");

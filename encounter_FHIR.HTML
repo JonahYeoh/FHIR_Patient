@@ -3,22 +3,25 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="styleNav.css">
+    <link rel="icon" href="icon_FHIR.svg" sizes="16x16" type="image/svg" />
+
     <title> + Encounter </title>
-	<style>
-	#hide_table{
-	
-		margin-left: 50px;
-		margin-right:auto;
-	}
-	</style>
+    <link rel="stylesheet" type="text/css" href="pageStyle.css">
+    <link rel="stylesheet" type="text/css" href="navStyle.css">
+    <style>
+        #hide_table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
     <script type="text/javascript" charset="UTF-8"></script>
-    <script src="Cookie.js"></script>
-    <script src="FHIR_encounter.js"></script>
-    <script src="HTTP2019_encounter.js"></script>
-    <script src="uiHandler.js"></script>
-    <script src="dateTime.js"></script>
+    <script src="/JavaScript/Cookie.js"></script>
+    <script src="/JavaScript/httpGetPost.js"></script>
+    <script src="/JavaScript/FHIR_Encounter_Verification.js"></script>
+    <script src="/JavaScript/FHIR_Encounter.js"></script>
+    <script src="/JavaScript/uiHandler.js"></script>
+    <script src="/JavaScript/utility.js"></script>
+    <script src="/JavaScript/dateTime.js"></script>
     <script>
         function acc() {
             var str = "Practitioner ID:";
@@ -27,7 +30,7 @@
     </script>
 </head>
 
-<body onload="acc();">
+<body onload="loadHideTable()">
     <nav>
         <div id="sidebar">
             <div class="toggle-btn" onclick="toggleSidebar()">
@@ -42,17 +45,16 @@
                 <h5>PRIVATE</h5>
             </div>
             <ul>
-                <li><a href="patient_v2.htm">+ Patient</a></li>
-                <li><a href="practitioner.htm">+ Practitioner</a></li>
-                <li><a href="practitionerRole.htm">+ Practitioner Role</a></li>
-                <li><a href="encounter.htm">Encounter</a></li>
+                <li><a href="patient_FHIR.HTML">+ Patient</a></li>
+                <li><a href="practitioner_FHIR.HTML">+ Practitioner</a></li>
+                <li><a href="practitionerRole_FHIR.HTML">+ Practitioner Role</a></li>
+                <li><a href="encounter_FHIR.HTML">Encounter</a></li>
             </ul>
             <div class="part">
                 <h5>PUBLIC</h5>
             </div>
             <ul>
-                <li><a
-                        href="http://www.tzuchi.org.my/fundraising/en/%E6%B4%97%E8%85%8E%E4%B8%AD%E5%BF%83%E7%9A%84%E5%8A%9F%E8%83%BD/">About
+                <li><a href="http://www.tzuchi.org.my/fundraising/en/%E6%B4%97%E8%85%8E%E4%B8%AD%E5%BF%83%E7%9A%84%E5%8A%9F%E8%83%BD/">About
                         Us</a></li>
             </ul>
             <div class="vgap">
@@ -60,7 +62,7 @@
             </div>
         </div>
     </nav>
-    <div class="content">
+    <div class="content" style="overflow: auto;">
         <table>
             <tr>
                 <td class="column0">First Name:</td>
@@ -69,18 +71,35 @@
             </tr>
 
 
-            
+            <!--
             <tr>
                 <td class="column0">Last Name:</td>
                 <td class="hgap"></td>
                 <td class="column2"><input type="text" id="family" name="username" /></td>
             </tr>
+-->
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+
             <tr>
                 <td colspan="3" align="center">
                     <button type="button" onclick="verify();">Confirm</button>
                     <br />
-                    <input type="text" name="time" id="start_time" size="50"/>
+
                 </td>
+            </tr>
+            <tr>
+                <td class="column0">
+                    Date/Time:
+                </td>
+                <td class="hgap"></td>
+                <td class="column2">
+                    <input type="text" name="time" id="start_time" size="50" />
+                </td>
+            </tr>
             <tr>
                 <td class="column0">Practitioner ID:</td>
                 <td class="hgap"></td>
@@ -8651,10 +8670,9 @@
                 </td>
             </tr>
         </table>
-        <p id="hide_table">
+        <div class="vgap">
+        </div>
+        <div id="hide_table">
             Loading...
-        </p>
-    </div>
+        </div>
 </body>
-
-</html>

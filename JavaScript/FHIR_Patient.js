@@ -1,4 +1,4 @@
-﻿var gender = () => {
+var gender = () => {
     return document.getElementById("gender").value;
 }
 var contactValue = () => {
@@ -7,6 +7,7 @@ var contactValue = () => {
 
 function patientPost() {
     var status = true;
+    alert(status);
     var text = {
         "resourceType": "Patient",
         "id": "ax98234",
@@ -180,19 +181,23 @@ function patientPost() {
             "reference": "Organization/jonah"
         }
     }
-
+    alert(status);
     if ((text.id = document.getElementById("nid").value) == '')
         return 0;
     text.identifier[0].value = "emr" + document.getElementById("nid").value;
     text.identifier[1].value = document.getElementById("nid").value;
-    if ((text.identifier[2].value = document.getElementById("wid").value) == '')
+    if ((text.identifier[2].value = document.getElementById("wid").value) == '') {
+        console.log("incomplete entry");
         return 0;
+    }
 
     if ((text.name[0].given[0] = document.getElementById("given").value) != '') {
         text.name[0].prefix = document.getElementById("title").value;
         text.name[0].given[0] = document.getElementById("given").value;
-    } else
+    } else {
+        console.log("incomplete entry");
         return 0;
+    }
 
     text.name[1].given[0] = document.getElementById("givenTaiwan").value;
 
@@ -200,8 +205,10 @@ function patientPost() {
         text.name[2].given[0] = document.getElementById("givenSimplified").value;
     }
 
-    if ((text.telecom[0].value = document.getElementById("telecom0").value) == '')
+    if ((text.telecom[0].value = document.getElementById("telecom0").value) == '') {
+        console.log("incomplete entry");
         return 0;
+    }
     text.telecom[1].value = document.getElementById("telecom1").value;
     text.telecom[2].value = document.getElementById("telecom2").value;
 
@@ -262,7 +269,7 @@ function patientPost() {
     if (status == true) {
         var myJSON = JSON.stringify(text);
         //var url = "http://192.168.174.128:8080/hapi-fhir-jpaserver-example/baseDstu3/Patient/" + text.id;
-        var url = "http://hapi.fhir.org/baseDstu3/Patient/" + text.id;
+        var url = "http://hapi.fhir.org/baseR4/Patient/" + text.id;
         HTTPPutData(url, myJSON, "patient");
     } else
         alert("Operation Failed");
